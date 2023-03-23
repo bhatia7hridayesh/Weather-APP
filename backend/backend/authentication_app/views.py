@@ -13,7 +13,9 @@ class UserRegistration(CreateAPIView):
     serializer_class = UserRegisterSerializer
     permission_classes = [permissions.AllowAny]
 
-
+"""
+API response shows weather report for next 5 days
+"""
 class GetWeatherReport(APIView):
     permission_classes = [permissions.AllowAny]
     def get(self, request, query):
@@ -28,7 +30,9 @@ class GetWeatherReport(APIView):
         return Response("Enter a valid city/country name", status=status.HTTP_400_BAD_REQUEST)
 
         
-
+"""
+AN API to update user's favourite cities.
+"""
 class AddToFavourites(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
@@ -42,7 +46,9 @@ class AddToFavourites(APIView):
         user.save()
         return Response(user.favourites, status=status.HTTP_200_OK)
         
-
+"""
+API to get an user's favourite cities.
+"""
 class GetFavourites(APIView):
     permission_classes = [permissions.IsAuthenticated]
 
